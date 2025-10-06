@@ -53,12 +53,12 @@ class _MyHomePageState extends State<MyHomePage> {
                         SizedBox(width: 20),
                         ElevatedButton(
                           onPressed: () {
-                            /*Navigator.push(
+                            Navigator.push(
                               context,
                               MaterialPageRoute<void>(
-                                builder: (context) => const SecondRoute(),
+                                builder: (context) => const food1(),
                               ),
-                            );*/
+                            );
                           },
                           child: const Text('View Recipe'),
                         ),
@@ -73,12 +73,12 @@ class _MyHomePageState extends State<MyHomePage> {
                         SizedBox(width: 20),
                         ElevatedButton(
                           onPressed: () {
-                            /*Navigator.push(
+                            Navigator.push(
                               context,
                               MaterialPageRoute<void>(
-                                builder: (context) => const SecondRoute(),
+                                builder: (context) => const food2(),
                               ),
-                            );*/
+                            );
                           },
                           child: const Text('View Recipe'),
                         ),
@@ -93,12 +93,12 @@ class _MyHomePageState extends State<MyHomePage> {
                         SizedBox(width: 20),
                         ElevatedButton(
                           onPressed: () {
-                            /*Navigator.push(
+                            Navigator.push(
                               context,
                               MaterialPageRoute<void>(
-                                builder: (context) => const SecondRoute(),
+                                builder: (context) => const food3(),
                               ),
-                            );*/
+                            );
                           },
                           child: const Text('View Recipe'),
                         ),
@@ -110,6 +110,60 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+}
+class food1 extends StatelessWidget {
+  const food1({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Second Route')),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            // Navigate back to first route when tapped.
+          },
+          child: const Text('Go back!'),
+        ),
+      ),
+    );
+  }
+}
+class food2 extends StatelessWidget {
+  const food2({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Second Route')),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            // Navigate back to first route when tapped.
+          },
+          child: const Text('Go back!'),
+        ),
+      ),
+    );
+  }
+}
+class food3 extends StatelessWidget {
+  const food3({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Second Route')),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            // Navigate back to first route when tapped.
+          },
+          child: const Text('Go back!'),
         ),
       ),
     );
