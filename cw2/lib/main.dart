@@ -10,11 +10,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'My Recipes',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Recipe List'),
     );
   }
 }
@@ -40,6 +40,8 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            Text("Select a Recipe", 
+            style: TextStyle (fontSize: 32),),
             Expanded(
               child: Center(
               child: ListView(
@@ -56,7 +58,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             Navigator.push(
                               context,
                               MaterialPageRoute<void>(
-                                builder: (context) => const food(data: "sandwich"),
+                                builder: (context) => const food(data: "Pimento Cheese Sandwich"),
                               ),
                             );
                           },
@@ -76,7 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             Navigator.push(
                               context,
                               MaterialPageRoute<void>(
-                                builder: (context) => const food(data: "burger"),
+                                builder: (context) => const food(data: "Burger"),
                               ),
                             );
                           },
@@ -96,7 +98,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             Navigator.push(
                               context,
                               MaterialPageRoute<void>(
-                                builder: (context) => const food(data: "spaghetti"),
+                                builder: (context) => const food(data: "Spaghetti"),
                               ),
                             );
                           },
@@ -122,16 +124,50 @@ class food extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Second Route')),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            // Navigate back to first route when tapped.
-          },
-          child: const Text('Go back!'),
-        ),
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        title: Text('$data - Details'),
       ),
-    );
+      body: data == "Pimento Cheese Sandwich" ? sandwichDisplay(): Text("No data"),
+    );    
+  }
+}
+
+class sandwichDisplay extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text("Pimento Cheese Sandwich Recipe", 
+            style: TextStyle (fontSize: 32),),
+            Expanded(
+              child: Center(
+              child: ListView(
+                shrinkWrap: true,
+                children: <Widget>[
+                  ListTile(
+                    title: Center( child:Text("Pimento Cheese Sandwich Ingredients", 
+                    style: TextStyle (fontSize: 24, fontWeight: FontWeight.bold,),),)
+                  ),
+                  ListTile(
+                    title: Center(child: Text("Bread")),
+                  ),
+                  ListTile(
+                    title: Center(child: Text("Pimento Cheese Spread")),
+                  ),
+                  ListTile(
+                    title: Center( child:Text("How to make it: ", 
+                    style: TextStyle (fontSize: 24, fontWeight: FontWeight.bold,),),)
+                  ),
+                ],
+              ),
+              ),
+            ),
+          ],
+        ),
+      );
   }
 }
 
