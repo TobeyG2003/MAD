@@ -56,7 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             Navigator.push(
                               context,
                               MaterialPageRoute<void>(
-                                builder: (context) => const food1(),
+                                builder: (context) => const food(data: "sandwich"),
                               ),
                             );
                           },
@@ -76,7 +76,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             Navigator.push(
                               context,
                               MaterialPageRoute<void>(
-                                builder: (context) => const food2(),
+                                builder: (context) => const food(data: "burger"),
                               ),
                             );
                           },
@@ -96,7 +96,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             Navigator.push(
                               context,
                               MaterialPageRoute<void>(
-                                builder: (context) => const food3(),
+                                builder: (context) => const food(data: "spaghetti"),
                               ),
                             );
                           },
@@ -115,8 +115,9 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
-class food1 extends StatelessWidget {
-  const food1({super.key});
+class food extends StatelessWidget {
+  final String data;
+  const food({super.key, required this.data});
 
   @override
   Widget build(BuildContext context) {
@@ -133,39 +134,4 @@ class food1 extends StatelessWidget {
     );
   }
 }
-class food2 extends StatelessWidget {
-  const food2({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Second Route')),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            // Navigate back to first route when tapped.
-          },
-          child: const Text('Go back!'),
-        ),
-      ),
-    );
-  }
-}
-class food3 extends StatelessWidget {
-  const food3({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Second Route')),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            // Navigate back to first route when tapped.
-          },
-          child: const Text('Go back!'),
-        ),
-      ),
-    );
-  }
-}
