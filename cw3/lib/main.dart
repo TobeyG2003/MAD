@@ -90,6 +90,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void deleteTask(int index) {
     setState(() {
       taskList.removeAt(index);
+      saveTasks(taskList);
     });
   }
   Future<void> saveTasks(List<Task> objects) async {
