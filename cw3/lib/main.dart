@@ -22,26 +22,55 @@ class Task {
   }
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  ThemeMode _themeMode = ThemeMode.system;
+
+  void toggleTheme() {
+    setState(() {
+      if (_themeMode == ThemeMode.dark) {
+        _themeMode = ThemeMode.light;
+      } else {
+        _themeMode = ThemeMode.dark;
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      darkTheme: ThemeData.dark(),
+      themeMode: _themeMode,
+      home: MyHomePage(
+        title: 'Flutter Demo Home Page',
+        onToggleTheme: toggleTheme,
+        isDarkMode: _themeMode == ThemeMode.dark,
+      ),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+  const MyHomePage({
+    super.key,
+    required this.title,
+    required this.onToggleTheme,
+    required this.isDarkMode,
+  });
 
   final String title;
+  final VoidCallback onToggleTheme;
+  final bool isDarkMode;
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -51,6 +80,7 @@ class _MyHomePageState extends State<MyHomePage> {
   List<Task> taskList = [];
   String taskstring = '';
   final TextEditingController _controller = TextEditingController();
+  // Theme control lifted to MyApp. Use widget.onToggleTheme and widget.isDarkMode
 
   @override
   void initState() {
@@ -188,6 +218,11 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: widget.onToggleTheme,
+        tooltip: 'Toggle Theme',
+        child: Icon(widget.isDarkMode ? Icons.wb_sunny : Icons.nightlight_round),
       ),
     );
   }
